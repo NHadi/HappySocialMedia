@@ -37,3 +37,10 @@ Happy5SocialMedia.Activity => Action => Start
 Happy5SocialMedia.Message => Action => Start
 Happy5SocialMedia.User => Action => Start
 
+
+# Coming soon
+1. SignalR 
+2. Docker
+3. Redist
+4. Queueing
+5. etc
