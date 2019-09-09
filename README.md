@@ -1,6 +1,8 @@
 # HappySocialMedia
 HappySocialMedia with Microservices Domain Driven Design with all best practices design and architetural patterns as DDD, CrossCutting IoC, SOLID, etc
 
+Please Readme MS Word Version
+
 # Require 
 1. .NET Core 2.2
 2. Visual Studio 2017
