@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Happy5SocialMedia.Activity</name>
+    </assembly>
+    <members>
+        <member name="M:Happy5SocialMedia.Activity.Controllers.FriendController.Get">
+            <summary>
+            Get All Friend Request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Happy5SocialMedia.Activity.Controllers.FriendController.GetRelationship(System.Guid)">
+            <summary>
+            Get Friend 
+            </summary>
+            <param name="idUser">ID USER</param>
+            <returns></returns>
+        </member>
+        <member name="M:Happy5SocialMedia.Activity.Controllers.FriendController.GetRequest(System.Guid)">
+            <summary>
+            Get Request Friend 
+            </summary>
+            <param name="idUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Happy5SocialMedia.Activity.Controllers.FriendController.Post(Happy5SocialMedia.Activity.Application.DTO.FriendRelationshipRequest)">
+            <summary>
+            Send Request Friend
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Happy5SocialMedia.Activity.Controllers.FriendController.Approve(System.Guid)">
+            <summary>
+            Approve Friendship
+            </summary>
+            <param name="idRequest"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
