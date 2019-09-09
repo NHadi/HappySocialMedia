@@ -22,17 +22,15 @@ HappySocialMedia with Microservices Domain Driven Design with all best practices
 
 
 # Installation
-1. Open CMD and navigate to root of Solution, type “dotnet build”
+1. Open CMD and navigate to root of Solution, type â€œdotnet buildâ€
 2. Change appsettings.json => 	"ConnectionStrings": {},
-3. Tools –> NuGet Package Manager –> Package Manager Console
+3. Tools â€“> NuGet Package Manager â€“> Package Manager Console
 Set Detault Project = Happy5SocialMedia.Activity 
 Set Startup Project = Happy5SocialMedia.Activity
 in Pacakage Manager Console type => Update-Database 
-
 repeat for All Services
 Happy5SocialMedia.Message
 Happy5SocialMedia.User
-
 4. Set Starup Project, to Multiple StartUp Project
 Chose All Services
 Happy5SocialMedia.Activity => Action => Start
