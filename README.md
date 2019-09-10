@@ -22,6 +22,12 @@ Please Readme MS Word Version
 12. Scalable
 13. any more :)
 
+# ready Docker-Compose ^-^
+1. Clone Project
+2. Open CMD
+3. Navigate to Root of Folder (HappySocialMedia\src)
+4. "docker-compose up"
+5. Finish
 
 # Installation
 1. Open CMD and navigate to root of Solution, type “dotnet build”
@@ -45,11 +51,12 @@ Chose All Services
 Happy5SocialMedia.Activity => Action => Start
 Happy5SocialMedia.Message => Action => Start
 Happy5SocialMedia.User => Action => Start
-
+5. Finish 
 
 # Coming soon
 1. SignalR 
-2. Docker
+2. Docker => DONE
 3. Redist
 4. Queueing
-5. etc
+5. Event Bus
+6. etc
