@@ -1,5 +1,5 @@
 # HappySocialMedia
-HappySocialMedia with Microservices Domain Driven Design with all best practices design and architetural patterns as DDD, CrossCutting IoC, SOLID, etc
+HappySocialMedia with Microservices Domain Driven Design with all best practices design and architetural patterns as DDD, CrossCutting IoC, SOLID, Scalability, Performance, Rapid & flexible development, etc
 
 Please Readme MS Word Version
 
