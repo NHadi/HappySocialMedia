@@ -1,6 +1,8 @@
 # HappySocialMedia
 HappySocialMedia with Microservices Domain Driven Design with all best practices design and architetural patterns as DDD, CrossCutting IoC, SOLID, etc
 
+Please Readme MS Word Version
+
 # Require 
 1. .NET Core 2.2
 2. Visual Studio 2017
@@ -25,15 +27,29 @@ HappySocialMedia with Microservices Domain Driven Design with all best practices
 1. Open CMD and navigate to root of Solution, type “dotnet build”
 2. Change appsettings.json => 	"ConnectionStrings": {},
 3. Tools –> NuGet Package Manager –> Package Manager Console
-Set Detault Project = Happy5SocialMedia.Activity 
+
+Set Detault Project = Happy5SocialMedia.Activity
+
 Set Startup Project = Happy5SocialMedia.Activity
+
 in Pacakage Manager Console type => Update-Database 
+
 repeat for All Services
+
 Happy5SocialMedia.Message
+
 Happy5SocialMedia.User
+
 4. Set Starup Project, to Multiple StartUp Project
 Chose All Services
 Happy5SocialMedia.Activity => Action => Start
 Happy5SocialMedia.Message => Action => Start
 Happy5SocialMedia.User => Action => Start
 
+
+# Coming soon
+1. SignalR 
+2. Docker
+3. Redist
+4. Queueing
+5. etc
