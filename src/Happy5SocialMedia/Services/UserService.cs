@@ -23,51 +23,41 @@ namespace Happy5SocialMedia.Services
             _mapper = mapper;
         }
 
-        public ApiDto Add(AccountUserCreateRequest request)
-        {
-            try
-            {
-                var resspond = new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
-                           .PostSingle("User", request);
+        public ApiDto Add(AccountUserCreateRequest accountUser)
+        => new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Request(Global.Method.POST, $"User", accountUser);
 
-                return resspond;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        public ApiDto Delete(Guid Id)
+        => new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Request(Global.Method.DELETE, $"User/{Id}");
 
-        public ApiDto ListParents(Guid IdUser)
-        {
-            var resspond = new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
-                           .GetSingle($"User/{IdUser}");
+        public AccountUserRespond Detail(Guid Id)
+        => new HTTPWebRequestUtilities<AccountUserRespond>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .GetSingle($"User/{Id}");
 
-            return resspond;
-        }
+        public List<AccountUserRespond> ListParents(Guid IdAccountUser)
+        => new HTTPWebRequestUtilities<AccountUserRespond>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Get($"User/{IdAccountUser}/Parent").ToList();
 
-        public ApiDto ListSubordinates(Guid IdUser)
-        {
-            var resspond = new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
-                           .GetSingle($"User/{IdUser}/subordinates");
+        public List<AccountUserRespond> ListSubordinates(Guid IdAccountUser)
+        => new HTTPWebRequestUtilities<AccountUserRespond>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Get($"User/{IdAccountUser}/subordinates").ToList();
 
-            return resspond;
-        }
+        public List<AccountUserRespond> ListUser(string keyword)
+        => new HTTPWebRequestUtilities<AccountUserRespond>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Get($"User/{keyword}").ToList();
 
-        public ApiDto ListUser()
-        {
-            var resspond = new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
-                           .Request(Global.Method.GET, $"User");
+        public List<AccountUserRespond> ListUser()
+        => new HTTPWebRequestUtilities<AccountUserRespond>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Get($"User").ToList();
 
-            return resspond;
-        }
+        public List<AccountUserRespond> ListUser(List<Guid> IdAccountUsers)
+            => new HTTPWebRequestUtilities<AccountUserRespond>(_urlApiFactory.GetUrl(ServiceType.User))
+                            .Post($"Users", IdAccountUsers);
+           
+        public ApiDto Update(Guid Id, AccountUserUpdateRequest request)
+            =>  new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
+                           .Request(Global.Method.PUT, $"User/{Id}", request);
 
-        public ApiDto Update(Guid IdUser, AccountUserUpdateRequest request)
-        {
-            var resspond = new HTTPWebRequestUtilities<ApiDto>(_urlApiFactory.GetUrl(ServiceType.User))
-                           .Request(Global.Method.PUT, $"User/{IdUser}", request);
-
-            return resspond;
-        }
     }
 }

@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+
+  happy5socialmedia.activity:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:80
+      - UserUrl=http://happy5socialmedia.user/api/    
+      - ConnectionString=server=sql.data;Initial Catalog=Happy5SocialMedia_Activity;User ID=sa;Password=Pass@word;
+    ports:
+      - "80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  happy5socialmedia.user:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:80     
+      - ConnectionString=server=sql.data;Initial Catalog=Happy5SocialMedia_User;User ID=sa;Password=Pass@word;
+    ports:
+      - "80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  happy5socialmedia.message:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:80     
+      - UserUrl=http://happy5socialmedia.user/api/    
+      - ConnectionString=server=sql.data;Initial Catalog=Happy5SocialMedia_Message;User ID=sa;Password=Pass@word;
+    ports:
+      - "80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  happy5socialmedia:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:80     
+      - UserUrl=http://happy5socialmedia.user/api/    
+      - MessageUrl=http://happy5socialmedia.message/api/    
+      - ActivityUrl=http://happy5socialmedia.activity/api/    
+    ports:
+      - "80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

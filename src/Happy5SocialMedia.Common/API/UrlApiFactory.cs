@@ -21,16 +21,16 @@ namespace Happy5SocialMedia.Common.API
             switch (serviceType)
             {
                 case ServiceType.User:
-                    url = _configuration.GetSection("UserService").Value;
+                    url = _configuration.GetSection("UserUrl").Value;
                     break;
                 case ServiceType.Acitivity:
-                    url = _configuration.GetSection("AcitivityService").Value;
+                    url = _configuration.GetSection("AcitivityUrl").Value;
                     break;
                 case ServiceType.Message:
-                    url = _configuration.GetSection("MessageService").Value;
+                    url = _configuration.GetSection("MessageUrl").Value;
                     break;
                 case ServiceType.Post:
-                    url = _configuration.GetSection("PostService").Value;
+                    url = _configuration.GetSection("PostUrl").Value;
                     break;
                 default:
                     break;

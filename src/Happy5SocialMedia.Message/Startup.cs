@@ -35,7 +35,7 @@ namespace Happy5SocialMedia.Message
             services.InitBootsraper();
 
             services.AddDbContext<Happy5socialmedia_MessageContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(Global.DbConnection.MessageConnection)));
+                options.UseSqlServer(Configuration.GetSection("ConnectionString").Value));
 
             services.AddCors();
 

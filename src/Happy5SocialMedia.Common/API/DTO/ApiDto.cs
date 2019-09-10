@@ -10,8 +10,6 @@ namespace Happy5SocialMedia.Common.API.DTO
         public int statusCode { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string message { get; set; }
-        public object result { get; set; }
-        public int totalRows { get; set; }
+        public string message { get; set; }        
     }
 }
