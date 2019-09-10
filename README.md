@@ -6,6 +6,7 @@ Please Readme MS Word Version
 # Require 
 1. .NET Core 2.2
 2. Visual Studio 2017
+3. Docker 
 
 # Feateure 
 1. Shared Functions 
