@@ -15,9 +15,16 @@ namespace Happy5SocialMedia.Controllers
     public class SocialMediaController : ControllerBase
     {
         private readonly IUserService _userService;
-        public SocialMediaController(IUserService userService)
+        private readonly IFriendService _friendService;
+        private readonly IMessageService _messageService;
+        public SocialMediaController(IUserService userService, 
+            IFriendService friendService,
+            IMessageService messageService
+            )
         {
             _userService = userService;
+            _friendService = friendService;
+            _messageService = messageService;
         }
 
         #region User
@@ -118,6 +125,138 @@ namespace Happy5SocialMedia.Controllers
             {
                 var respond = _userService.Delete(id);
                 return Ok(respond);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        #endregion
+
+        #region Friend
+        [HttpGet]
+        [Route("ListRequest")]
+        public IActionResult ListRequest()
+        {
+            try
+            {
+                var responAPI = _friendService.ListRequest();
+                return Ok(new ApiOkResponse(responAPI));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        [HttpGet]
+        [Route("ListFriendRequest")]
+        public IActionResult ListFriendRequest(Guid idAccountUser)
+        {
+            try
+            {
+                var responAPI = _friendService.ListFriendRequest(idAccountUser);
+                return Ok(new ApiOkResponse(responAPI));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        [HttpGet]
+        [Route("ListFriend")]
+        public IActionResult ListFriend(Guid idAccountUser)
+        {
+            try
+            {
+                var responAPI = _friendService.ListFriend(idAccountUser);
+                return Ok(new ApiOkResponse(responAPI));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        [HttpPost]
+        [Route("ApproveRequest")]
+        public IActionResult ApproveRequest(Guid idRequest)
+        {
+            try
+            {
+                var responAPI = _friendService.Approve(idRequest);
+                return Ok(responAPI);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+
+        [HttpPost]
+        [Route("RequestFriend")]
+        public IActionResult RequestFriend([FromBody] FriendRelationshipRequest Request)
+        {
+            try
+            {
+                var responAPI = _friendService.Request(Request);
+                return Ok(responAPI);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        #endregion
+
+
+        #region Message
+        /// <summary>
+        /// Get Conversation User
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetUserConversation")]
+        public IActionResult GetUserConversation(Guid idUser)
+        {
+            try
+            {
+                var responAPI = _messageService.ListUserConversation(idUser);
+                return Ok(new ApiOkResponse(responAPI, responAPI.Count));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        /// <summary>
+        /// Read Message User
+        /// </summary>
+        /// <param name="idConversation"></param>
+        /// <returns></returns>
+
+        [HttpGet]
+        [Route("GetConversationMessages")]
+        public IActionResult GetConversationMessages(Guid idConversation)
+        {
+            try
+            {
+                var responAPI = _messageService.ListMessage(idConversation);
+                return Ok(new ApiOkResponse(responAPI, responAPI.Count));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
+        }
+        
+        [HttpPost]
+        [Route("SendMessage")]
+        public IActionResult SendMessage([FromBody] SendMessageRequest request)
+        {
+            try
+            {
+                var respon = _messageService.SendMessage(request);
+                return Ok(respon);
             }
             catch (Exception ex)
             {

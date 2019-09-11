@@ -13,6 +13,8 @@ namespace Happy5SocialMedia
         public static void InitAppBootsraper(this IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IFriendService, FriendService>();
+            services.AddTransient<IMessageService, MessageService>();
         }
     }
 }

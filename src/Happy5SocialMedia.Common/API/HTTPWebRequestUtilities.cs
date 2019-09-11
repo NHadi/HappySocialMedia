@@ -129,13 +129,17 @@ namespace Happy5SocialMedia.Common.API
             try
             {
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(_basePath + url);
-                httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = method;
 
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                if (method != Global.Method.GET)
                 {
-                    streamWriter.Write(ParseToJson(param));
+                    httpWebRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = method;
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        streamWriter.Write(ParseToJson(param));
+                    }
                 }
 
                 string ResponseString = "";

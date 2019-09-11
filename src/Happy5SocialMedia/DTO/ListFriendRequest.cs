@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Happy5SocialMedia.Activity.Application.DTO
+namespace Happy5SocialMedia.DTO
 {
     public class ListFriendRequest
     {

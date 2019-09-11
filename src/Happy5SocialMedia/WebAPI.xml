@@ -31,5 +31,19 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Happy5SocialMedia.Controllers.SocialMediaController.GetUserConversation(System.Guid)">
+            <summary>
+            Get Conversation User
+            </summary>
+            <param name="idUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Happy5SocialMedia.Controllers.SocialMediaController.GetConversationMessages(System.Guid)">
+            <summary>
+            Read Message User
+            </summary>
+            <param name="idConversation"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

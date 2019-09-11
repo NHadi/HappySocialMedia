@@ -7,6 +7,10 @@ services:
     build:
       context: .
       dockerfile: Happy5SocialMedia/Dockerfile
+    depends_on:
+      - happy5socialmedia.message
+      - happy5socialmedia.user
+      - happy5socialmedia.activity 
     ports:
       - "80"
 

@@ -7,7 +7,7 @@ namespace Happy5SocialMedia.Common.API.Enum
     public enum ServiceType
     {
         User,
-        Acitivity,
+        Activity,
         Message,
         Post
     }

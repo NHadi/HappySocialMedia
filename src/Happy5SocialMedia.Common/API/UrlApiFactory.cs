@@ -23,8 +23,8 @@ namespace Happy5SocialMedia.Common.API
                 case ServiceType.User:
                     url = _configuration.GetSection("UserUrl").Value;
                     break;
-                case ServiceType.Acitivity:
-                    url = _configuration.GetSection("AcitivityUrl").Value;
+                case ServiceType.Activity:
+                    url = _configuration.GetSection("ActivityUrl").Value;
                     break;
                 case ServiceType.Message:
                     url = _configuration.GetSection("MessageUrl").Value;

@@ -140,6 +140,7 @@ namespace Happy5SocialMedia.Activity.Application
                 {
                     var tmp = new ListFriendRequest
                     {
+                        IdRequest = item.Id,
                         UserSender = _userApiService.Detail(item.UserSender),
                         UserReciever = _userApiService.Detail(item.UserReciever),
                         Status = item.StatusNavigation.Name,                        
