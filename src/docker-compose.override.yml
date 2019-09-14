@@ -9,39 +9,48 @@ services:
       - UserUrl=http://happy5socialmedia.user/api/    
       - ConnectionString=server=sql.data;Initial Catalog=Happy5SocialMedia_Activity;User ID=sa;Password=Pass@word;
     ports:
-      - "80"
+      - "5102:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
   happy5socialmedia.user:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://*:80     
+      - ASPNETCORE_URLS=http://*:80
       - ConnectionString=server=sql.data;Initial Catalog=Happy5SocialMedia_User;User ID=sa;Password=Pass@word;
     ports:
-      - "80"
+      - "5101:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
   happy5socialmedia.message:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://*:80     
+      - ASPNETCORE_URLS=http://*:80
       - UserUrl=http://happy5socialmedia.user/api/    
       - ConnectionString=server=sql.data;Initial Catalog=Happy5SocialMedia_Message;User ID=sa;Password=Pass@word;
     ports:
-      - "80"
+      - "5103:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
   happy5socialmedia:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://*:80     
-      - UserUrl=http://happy5socialmedia.user/api/    
-      - MessageUrl=http://happy5socialmedia.message/api/    
-      - ActivityUrl=http://happy5socialmedia.activity/api/    
+      - ASPNETCORE_URLS=http://*:80
+      - UserUrl=http://happy5socialmedia.apigateway/user-api/    
+      - MessageUrl=http://happy5socialmedia.apigateway/message-api/    
+      - ActivityUrl=http://happy5socialmedia.apigateway/activity-api/    
     ports:
-      - "80"
+      - "5111:80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  happy5socialmedia.apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:80
+    ports:
+      - "5100:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro     

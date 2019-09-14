@@ -2,17 +2,17 @@ version: '3.4'
 
 services:
 
+  happy5socialmedia.apigateway:
+    image: ${DOCKER_REGISTRY-}happy5socialmediaapigateway
+    build:
+      context: .
+      dockerfile: Happy5SocialMedia.ApiGateway/Dockerfile
+
   happy5socialmedia:
     image: ${DOCKER_REGISTRY-}happy5socialmedia
     build:
       context: .
-      dockerfile: Happy5SocialMedia/Dockerfile
-    depends_on:
-      - happy5socialmedia.message
-      - happy5socialmedia.user
-      - happy5socialmedia.activity 
-    ports:
-      - "80"
+      dockerfile: Happy5SocialMedia/Dockerfile 
 
   happy5socialmedia.activity:
     image: ${DOCKER_REGISTRY-}happy5socialmediaactivity    
@@ -20,9 +20,7 @@ services:
       context: .
       dockerfile: Happy5SocialMedia.Activity/Dockerfile
     depends_on:
-      - sql.data
-    ports:
-      - "80"
+      - sql.data   
 
   happy5socialmedia.user:
     image: ${DOCKER_REGISTRY-}happy5socialmediauser
@@ -31,8 +29,6 @@ services:
       dockerfile: Happy5SocialMedia.User/Dockerfile
     depends_on:
       - sql.data
-    ports:
-      - "80"
 
   happy5socialmedia.message:
     image: ${DOCKER_REGISTRY-}happy5socialmediamessage
@@ -41,8 +37,6 @@ services:
       dockerfile: Happy5SocialMedia.Message/Dockerfile
     depends_on:
       - sql.data
-    ports:
-      - "80"
 
   sql.data:
     image: microsoft/mssql-server-linux:2017-latest
